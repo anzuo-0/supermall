@@ -1,32 +1,29 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <keep-alive exclude="Detail">
+      <!-- exclude="Detail"将Detail排除在外，就会重新执行Detail，每一次的详情就会不同 -->
+      <router-view />
+    </keep-alive>
+
+    <main-tab-bar></main-tab-bar>
   </div>
 </template>
 
+<script>
+import MainTabBar from "./components/content/maintabbar/MainTabBar.vue";
+
+export default {
+  name: "App",
+  components: {
+    MainTabBar,
+  },
+};
+</script>
+
 <style>
+@import "assets/css/base.css";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  position: relative;
 }
 </style>
