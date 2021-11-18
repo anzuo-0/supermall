@@ -3,6 +3,7 @@ import {
   ADD_TO_CART
 } from './mutation-types'
 export default {
+  // 在这添加商品，判断是否有这个商品
   addCart(context, payload) {
     return new Promise((reslove) => {
       let oldProduct = null

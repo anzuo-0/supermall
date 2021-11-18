@@ -1,4 +1,4 @@
-<!--  -->
+<!-- 尺码 -->
 <template>
   <div class="param-info" v-if="Object.keys(paramInfo).length !== 0">
     <table

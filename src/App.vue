@@ -10,6 +10,7 @@
 </template>
 
 <script>
+// maintabbar就是实现了一个跳转
 import MainTabBar from "./components/content/maintabbar/MainTabBar.vue";
 
 export default {
