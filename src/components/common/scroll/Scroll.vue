@@ -49,7 +49,7 @@ export default {
     // 监听滚动的位置
     if (this.probeType === 2 || this.probeType === 3) {
       this.scroll.on("scroll", (position) => {
-        // 通过自定义事件将它传出去,这样就会在它当时的页面惊醒调用
+        // 通过自定义事件将它传出去,这样就会在它当时的页面调用
         this.$emit("scroll", position);
       });
     }

@@ -10,6 +10,7 @@
       ref="tabControl1"
       v-show="isTabFixed"
     ></tab-control>
+    <!-- :probeType="3" 表示只有页面调用position -->
     <scroll
       class="content-scroll"
       ref="scroll"
@@ -34,9 +35,10 @@
       <!-- <goods-list :goods="goods['pop'].list"></goods-list> -->
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
-    <!-- 回到顶部 -->
-    <!-- 在这里监听back-top组件 -->
-    <back-top @click.native="backTop" v-show="isShowBackTop"></back-top>
+    <!-- 回到顶部 在这里监听back-top组件 在这里接收事件,但是这样做有点麻烦了-->
+    <!-- <back-top @backClick="backClick"/> -->
+    <!-- 所以我们直接在组件监听 组件是不能直接监听的需要加上.native -->
+    <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 </template>
 
@@ -168,10 +170,10 @@ export default {
       this.isTabFixed = -position.y > this.taboffsetTop;
     },
     // 回到顶部
-    // backClick() {
-    //   // 找到scroll组件里面的scroll属性里面的scrollTo方法
-    //   this.$refs.scroll.scrollTo(0, 0);
-    // },
+    backClick() {
+      // 找到scroll组件里面的scroll属性里面的scrollTo方法
+      this.$refs.scroll.scrollTo(0, 0);
+    },
     tabClick(index) {
       switch (index) {
         case 0:

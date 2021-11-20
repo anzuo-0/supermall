@@ -1,85 +1,32 @@
 <!--  -->
 <template>
-  <div>
-    <scroll class="content">
-      <ul>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-      </ul>
-    </scroll>
+  <div id="category">
+    <nav-bar class="navbar"><div slot="center">商品分类</div></nav-bar>
+    <div class="content">
+      <scroll id="tab-content">
+        <div>
+          <tab-content-category></tab-content-category>
+          <tab-control :titles="['综合', '新品', '销量']"
+                       @itemClick="tabClick"></tab-control>
+          <tab-content-detail :category-detail="showCategoryDetail"></tab-content-detail>
+        </div>
+      </scroll>
+    </div>
   </div>
 </template>
 
 <script>
-import Scroll from "../../components/common/scroll/Scroll.vue";
+import NavBar from "components/common/navbar/NavBar.vue";
+import TabContentCategory from "./childComs/TabContentCategory.vue";
+import TabControl from "components/content/tabcontrol/TabControl.vue";
+
 export default {
+  name:"Category",
   components: {
-    Scroll,
+  NavBar,
+  TabContentCategory,
+  TabControl,
+ 
   },
   data() {
     return {};
@@ -88,9 +35,8 @@ export default {
 </script>
 
 <style  scoped>
-.content {
-  height: 300px;
-  background-color:papayawhip;
-  /* overflow: hidden; */
+.navbar{
+  background-color: var(--color-tint);
+  color: #fff;
 }
 </style>
