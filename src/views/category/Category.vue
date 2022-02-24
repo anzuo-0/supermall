@@ -3,14 +3,11 @@
   <div id="category">
     <nav-bar class="navbar"><div slot="center">商品分类</div></nav-bar>
     <div class="content">
-      <scroll id="tab-content">
         <div>
-          <tab-content-category></tab-content-category>
-          <tab-control :titles="['综合', '新品', '销量']"
-                       @itemClick="tabClick"></tab-control>
-          <tab-content-detail :category-detail="showCategoryDetail"></tab-content-detail>
+          <tab-content-category :list = list></tab-content-category>
+          <tab-content-detail :list = list></tab-content-detail>
         </div>
-      </scroll>
+        
     </div>
   </div>
 </template>
@@ -18,19 +15,27 @@
 <script>
 import NavBar from "components/common/navbar/NavBar.vue";
 import TabContentCategory from "./childComs/TabContentCategory.vue";
-import TabControl from "components/content/tabcontrol/TabControl.vue";
-
+import TabContentDetail from "./childComs/TabContentDetail.vue"
+import { getCategory }from 'network/category'
 export default {
   name:"Category",
   components: {
   NavBar,
   TabContentCategory,
-  TabControl,
- 
+  TabContentDetail,
   },
   data() {
-    return {};
+    return {
+      list:[]
+    };
   },
+  created(){
+    getCategory().then((res) => {
+      this.list = res.data.category.list
+    });
+  },
+  methods:{
+  }
 };
 </script>
 
